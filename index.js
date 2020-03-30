@@ -8,7 +8,7 @@ const audit = {
 
     // What is the value of `this` when we call fn()?
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
 
     return result;
   },
@@ -31,7 +31,7 @@ const audit = {
 
     // What is the value of `this` when we call data.verify())?
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'data';
 
     return result;
   },
@@ -54,7 +54,7 @@ const audit = {
 
     // What is the value of `this` when we call dog.bark();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = 'global window object';
 
     return result;
   },
@@ -76,7 +76,6 @@ const audit = {
       if (greeting === 'hi') {
         let greeting = 'hey';
       }
-
       // Log A: greeting
       const newGreeting = ()  => {
         greeting = 'hi';
@@ -88,13 +87,17 @@ const audit = {
 
       // Log C: greeting
     };
+    
 
     // Log D: greeting
     greetingGenerator();
 
-    const result = [{
-      // 'ADD YOUR RESULT HERE';
-    }];
+    const result = [
+      { 'A': 'hi' },
+      { 'B': 'hi' },
+      { 'C': 'hi' },
+      { 'D': 'welcome'}
+    ];
 
     return result;
   },
@@ -122,9 +125,12 @@ const audit = {
 
     // Log D: shoe
 
-    const result = [{
-      // 'ADD YOUR RESULT HERE';
-    }];
+    const result = [
+      { 'A': 'heel' },
+      { 'C': 'heel' },
+      { 'B': 'boot' },
+      { 'D': 'heel'}
+    ];
 
     return result;
   },
@@ -168,13 +174,13 @@ const audit = {
         popular_dishes: ['pork', 'duck', 'steak', 'seafood']
       }
     ];
-
+    let names = restaurants.map(restaurant => restaurant.name);
     // Return an array of just the names of the restuarants:
 
     // e.g.
     // ['Beckon', 'El Five', 'ChoLon', 'Super Mega Bien']
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = names;
 
     return result;
   },
@@ -220,6 +226,12 @@ const audit = {
     ];
 
     // Return an array of objects that include just the name of the restaurant and whether takeout is available
+
+    let newObj = restaurants.map(restaurant => {
+      let name = restaurant.name;
+      let takeout = restaurant.takeout;
+      return {name, takeout};
+    });
     
     // e.g.
     // [
@@ -228,7 +240,7 @@ const audit = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = newObj;
 
     return result;
   },
@@ -282,7 +294,14 @@ const audit = {
     //    'Asian Fusion': ['ChoLon']
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    let brandNewObj = restaurants.reduce((acc, restaurant) => {
+      if(!acc[restaurant.cuisine]) {
+        acc[restaurant.cuisine] = [];
+      }
+      acc[restaurant.cuisine].push(restaurant.name);
+    }, {});
+
+    const result = brandNewObj;
 
     return result;
   },
@@ -317,8 +336,12 @@ const audit = {
 
     // Fill out functionality below. Your result variable (line 320) is already set up and does not need to be modified
 
-    function alphabetWar(fight) {
+    const left = [{'w': 4}, {'p': 3}, {'b': 2}, {'s': 1}];
 
+    const right = [{'m': 4}, {'q': 3}, {'d': 2}, {'z': 1}];
+
+    function alphabetWar(fight) {
+      
     }
 
 
